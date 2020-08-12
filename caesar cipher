@@ -11,15 +11,18 @@ for i in Word:
     for j, k in characters.items():
 #trying to find a match betwen the dict and the charatcers that the user enters
         if i == k:
-        #here we add to the value number the shift that the user entered
+            #here we add to the value number the shift that the user entered
             j += Shift
-        #we do this step because that we want j value to stay under 26
+            #we do this step because that we want j value to stay under 26
             while j > 26:
                 j -= 26
             #we here take the value from j number in the dict
             char = characters[j]
-        #we add here the new character that we got to the var new_word
+            #we add here the new character that we got to the var new_word
             new_word += char
+    if i not in characters.values():
+         print("There is a input that is not from english alphabet!")
+         break
 
 print((new_word).lower())
 
@@ -38,7 +41,9 @@ if ask=="y":
                     j += 26
                 char = characters[j]
                 Un_Enrypted_word += char
-
+        if i not in characters.values():
+            print("There is a input that is not from english alphabet!")
+            break
 elif ask =="n":
     print("Have a nice day!")
 print((Un_Enrypted_word).lower())
