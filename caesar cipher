@@ -1,14 +1,44 @@
+#this is a dict with english alphabet
 characters = {1:"A",2:"B",3: "C",4: "D",5: "E",6: "F",7: "G",8: "H",9: "I",10: "J",11: "K",12: "L",13: "M",14: "N",15: "O",16: "P",17: "Q",18: "R",19: "S",20: "T",21: "U",22: "V",23: "W",24: "X",25: "Y",26: "Z"}
-Word=input("Enter the Word that you want to Encrypt: ").upper()
+#here i ask the user to enter a word that he want to encrypt
+Word=input("Enter the Word that you want to Encrypt(English alphabet): ").upper()
+#here i ask him to enter how much he want to shift
 Shift=int(input("Enter the Shift Factor:"))
 new_word=""
+#here i get the characters from the word that the user did enter
 for i in Word:
-    for j,k in characters.items():
-        if i ==k:
-            j+=Shift
-            while j>26:
-                j-=26
-            char=characters[j]
-            new_word+=char
+#here i want to know the valuse and the keys from my dict
+    for j, k in characters.items():
+#trying to find a match betwen the dict and the charatcers that the user enters
+        if i == k:
+        #here we add to the value number the shift that the user entered
+            j += Shift
+        #we do this step because that we want j value to stay under 26
+            while j > 26:
+                j -= 26
+            #we here take the value from j number in the dict
+            char = characters[j]
+        #we add here the new character that we got to the var new_word
+            new_word += char
 
-print(new_word)'
+print((new_word).lower())
+
+
+
+ask=input("do you want to un-Encrtypt? y/n. ")
+if ask=="y":
+    Enrypted_word = input("Enter the word that you want to un-enrypt(English alphabet)?").upper()
+    Enrypted_shift = int(input("Enter the Shift Factor?"))
+    Un_Enrypted_word = ""
+    for i in Enrypted_word:
+        for j, k in characters.items():
+            if i == k:
+                j -= Shift
+                while j < 1:
+                    j += 26
+                char = characters[j]
+                Un_Enrypted_word += char
+
+elif ask =="n":
+    print("Have a nice day!")
+print((Un_Enrypted_word).lower())
